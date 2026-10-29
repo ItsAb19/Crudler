@@ -3,6 +3,8 @@ import Screen from '../layout/Screen';
 
 import initialModules from '../../data/modules.js';
 //Initialisations--------------------------------------------
+const modules = initialModules;
+
 //State------------------------------------------------------
 //handlers---------------------------------------------------
 //View-------------------------------------------------------
@@ -10,7 +12,7 @@ import initialModules from '../../data/modules.js';
 const ModuleListScreen = () => {
   return (
     <Screen>
-      <Text>List</Text>
+      
     </Screen>
   );
 }
