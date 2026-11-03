@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet } from 'react-native';
 import ModuleItem from './ModuleItem';
 
-const ModuleList = ({ modules, onSelect }) => {
+const ModuleList = ({ modules, onDelete }) => {
   // Initialisations --------------------------------------------
 
   // State ------------------------------------------------------
@@ -16,7 +16,7 @@ const ModuleList = ({ modules, onSelect }) => {
           <ModuleItem
             key={module.ModuleCode}
             module={module}
-            onSelect={onSelect}
+            onDelete={onDelete}
           />
         );
       })}
@@ -29,4 +29,3 @@ const styles = StyleSheet.create({
 });
 
 export default ModuleList;
-

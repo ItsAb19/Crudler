@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-const ModuleItem = ({ module, onSelect }) => {
+const ModuleItem = ({ module, onDelete }) => {
   // Initialisations --------------------------------------------
 
   // State ------------------------------------------------------
@@ -9,7 +9,7 @@ const ModuleItem = ({ module, onSelect }) => {
 
   // View -------------------------------------------------------
   return (
-    <Pressable onPress={() => onSelect(module)}>
+    <Pressable onPress={() => onDelete(module)}>
       <View style={styles.item}>
         <Text style={styles.text}>
           {module.ModuleCode} {module.ModuleName}
