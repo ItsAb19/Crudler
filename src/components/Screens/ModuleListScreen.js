@@ -1,27 +1,31 @@
-import { Alert } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import Screen from '../layout/Screen';
 import ModuleList from '../entity/modules/ModuleList';
+import RenderCount from '../UI/RenderCount';
 
 import initialModules from '../../data/modules.js';
 
-// Initialisations --------------------------------------------
-const modules = initialModules;
-
-// State ------------------------------------------------------
-
-// Handlers ---------------------------------------------------
-const handleSelect = (module) => {
-  Alert.alert(`Item ${module.ModuleCode} Selected`);
-};
-
-// View -------------------------------------------------------
 const ModuleListScreen = () => {
+  // Initialisations --------------------------------------------
+
+  // State ------------------------------------------------------
+  const [modules, setModules] = useState(initialModules);
+
+  // Handlers ---------------------------------------------------
+  const handleDelete = (module) => {
+    setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
+  };
+
+  // View -------------------------------------------------------
   return (
     <Screen>
-      <ModuleList modules={modules} onSelect={handleSelect} />
+      <RenderCount />
+      <ModuleList modules={modules} onDelete={handleDelete} />
     </Screen>
   );
 };
 
-export default ModuleListScreen;
+const styles = StyleSheet.create({});
 
+export default ModuleListScreen;
