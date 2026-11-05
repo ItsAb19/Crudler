@@ -1,31 +1,25 @@
+
 import { ScrollView, StyleSheet } from 'react-native';
 import ModuleItem from './ModuleItem';
 
-const ModuleList = ({ modules, onDelete }) => {
+const ModuleList = ({ modules, onSelect }) => {
   // Initialisations --------------------------------------------
-
   // State ------------------------------------------------------
-
   // Handlers ---------------------------------------------------
-
   // View -------------------------------------------------------
   return (
-    <ScrollView style={styles.container}>
-      {modules.map((module) => {
-        return (
-          <ModuleItem
-            key={module.ModuleCode}
-            module={module}
-            onDelete={onDelete}
-          />
-        );
-      })}
+    <ScrollView>
+      {modules.map((module) => (
+        <ModuleItem
+          key={module.ModuleID ?? module.ModuleCode}
+          module={module}
+          onSelect={onSelect}
+        />
+      ))}
     </ScrollView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
-});
+const styles = StyleSheet.create({});
 
 export default ModuleList;
