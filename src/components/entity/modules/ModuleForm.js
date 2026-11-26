@@ -22,13 +22,16 @@ const levels = [
   { value: 7, label: '7 (Masters)' },
 ];
 
-const ModuleForm = ({ onSubmit, onCancel }) => {
+const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
   // Initialisations --------------------------------------------
-  const submitLabel = 'Add';
-  const submitIcon = <Icons.Add />;
+  const isModifying = originalModule != null;
+  const submitLabel = isModifying ? 'Modify' : 'Add';
+  const submitIcon = isModifying ? <Icons.Edit /> : <Icons.Add />;
 
   // State ------------------------------------------------------
-  const [module, setModule] = useState({ ...defaultModule });
+  const [module, setModule] = useState({
+    ...(isModifying ? originalModule : defaultModule),
+  });
 
   // Handlers ---------------------------------------------------
   const handleChange = (field, value) =>
@@ -38,12 +41,13 @@ const ModuleForm = ({ onSubmit, onCancel }) => {
     }));
 
   const handleSubmit = () => {
-    const newModule = {
+    const submittedModule = {
       ...module,
-      ModuleID: Math.floor(100000 + Math.random() * 900000),
+      ModuleID:
+        module.ModuleID ?? Math.floor(100000 + Math.random() * 900000),
     };
 
-    onSubmit(newModule);
+    onSubmit(submittedModule);
   };
 
   // View -------------------------------------------------------
